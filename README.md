@@ -19,7 +19,7 @@ download  Dockerfile, package.json, proxy.js
   
   
  Once the container is running to proxy google search, on your browser
- http://<dockerhostip>:8080/<searchterm>
+ http://dockerhostip:8080/googlesearchterms
   
   the results from google will be displayed. http-middleware-proxy offers quite extensive filter and path rewrites. So you can add extra logic to proxy.js to make it work.
   
