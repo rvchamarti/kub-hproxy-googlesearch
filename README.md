@@ -21,5 +21,25 @@ download  Dockerfile, package.json, proxy.js
   the results from google will be displayed. http-middleware-proxy offers quite extensive filter and path rewrites. So you can add extra logic to proxy.js to make it work.
   
   
-  Working on kubernetes version.
+  Kubernetes
+  -----------
+  
+  Simple Method to move this image to kubernetes cluster is to save image to tar.gz and load into kubernetes cluster with docker images repo running
+  
+  
+  # docker save rv/hproxy | gzip -c > hproxy.tgz
+  
+  on Kub host, copy hproxy.tgz
+  # zcat hproxy.tgz | docker load
+  
+  To run this container as single deployment POD
+  # kubectl run --image=rv/hproxy hproxy --port=8080 --image-pull-policy=Never
+  
+  Add NodePort Service to 8080 to access portmapping to this http-proxy
+  #kubectl expose deployement hproxy --type=NodePort
+  
+  ofcourse, kubernetes does not allow system-level ports and randomly assign ports to NodePort so example http://kubhostip:3xxxxx/<googlesearchterms>
+  
+  
+ 
   
