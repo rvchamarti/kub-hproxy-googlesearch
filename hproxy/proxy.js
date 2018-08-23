@@ -7,7 +7,7 @@ var xss = require("xss");
 
 
 var rewriteFn = function (path, req) {
-    //// xss applied after replacing with search
+    //// xss applied after replacing with search 
     return xss(path.replace('/', '/search?q='));
 }
 
