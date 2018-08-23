@@ -2,11 +2,13 @@
 var express = require('express');
 var proxy = require('http-proxy-middleware');
 
+/// xss input validater for cross-site input validation
+var xss = require("xss");
+
 
 var rewriteFn = function (path, req) {
-    console.log("path is "+path);
-    console.log("path replace "+ path.replace('/', '/search?q='));
-    return path.replace('/', '/search?q=');
+    //// xss applied after replacing with search
+    return xss(path.replace('/', '/search?q='));
 }
 
 // proxy middleware options
