@@ -23,7 +23,7 @@ var filterRespFn = function (proxyRes, req, res) {
 var options = {
         target: 'https://google.com', // target host
         changeOrigin: true,               // needed for virtual hosted sites
-        ws: true ,                         // proxy websockets
+        ws: true,                         // proxy websockets
         pathRewrite: rewriteFn,
         onProxyRes: filterRespFn
     };
