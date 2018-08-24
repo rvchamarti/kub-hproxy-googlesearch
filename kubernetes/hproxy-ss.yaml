@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hproxy
+  labels:
+    app: hproxy
+spec:
+  ports:
+  - port: 10011
+    name: hproxy
+  clusterIP: None
+  selector:
+    app: hproxy
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: hproxy
+spec:
+  serviceName: "hproxy"
+  replicas: 4
+  selector:
+    matchLabels:
+      app: hproxy
+  template:
+    metadata:
+      labels:
+        app: hproxy
+    spec:
+      containers:
+        - env:
+          - name: PROXY_NAME
+            value: hproxyclus
+        imagePullPolicy: Never
+        image: rv/hproxy
+        name: hproxy
+        ports:
+        - containerPort: 10011
+          name: hproxyintport
+        - containerPort: 8080
+          name: hproxyextport
+  
