@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: hproxyext-nport
+  name: hproxyext-np
+spec:
+  ports:
+  - name: "hproxyext-nport"
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: hproxy
+  type: LoadBalancer
