@@ -2,7 +2,7 @@
 
 This is a nodejs based http proxy container for Google Search engine. It is very simple proxy for basic Google Search. All the google search parameters can be provided on URL path. The docker container is build using readytalk/nodejs(https://hub.docker.com/r/readytalk/nodejs/) container with following npm modules
 
-http-proxy,  http-proxy-middleware, node-http-proxy, and express
+http-proxy,  http-proxy-middleware, node-http-proxy, express, xss and google-caja-sanitizer 
 
 to build container on your machine, follow the below steps
 
